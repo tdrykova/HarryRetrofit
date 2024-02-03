@@ -7,7 +7,8 @@ import com.tatry.harryretrofit.data.local.entity.BookDb
 import com.tatry.harryretrofit.data.local.entity.CharacterDbModel
 import com.tatry.harryretrofit.data.local.entity.WandDbModel
 
-@Database(entities = [CharacterDbModel::class, WandDbModel::class, BookDb::class], version = 1)
+//@Database(entities = [CharacterDbModel::class, WandDbModel::class, BookDb::class], version = 1)
+@Database(entities = [CharacterDbModel::class], version = 2)
 abstract class AppDatabase: RoomDatabase() {
 
     // реализовать интерфейс CharacterDao или
