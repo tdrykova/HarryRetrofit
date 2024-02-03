@@ -2,6 +2,9 @@ package com.tatry.harryretrofit.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
+import com.tatry.harryretrofit.R
 import com.tatry.harryretrofit.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -10,5 +13,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // без библиотеки для фрагментов
+//        supportFragmentManager.beginTransaction().replace(
+//            R.id.fragment_container,
+//            MainFragment()
+//        ).commit()
+
+        // с библиотекой
+        supportFragmentManager.commit {
+            replace<MainFragment>(R.id.fragment_container)
+            addToBackStack(MainFragment::class.java.simpleName)
+        }
     }
+
+
 }

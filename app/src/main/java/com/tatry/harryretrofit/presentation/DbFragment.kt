@@ -34,7 +34,8 @@ class DbFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val applicationSingleton = requireActivity().application
 
-        viewModel.initDao(requireActivity().application)
+//        viewModel.initDao(requireActivity().application)
+        viewModel.initDao(activity?.application)
 
         binding.btnAdd.setOnClickListener { viewModel.onBtnAdd() }
         binding.btnUpdate.setOnClickListener { viewModel.onBtnUpdate() }

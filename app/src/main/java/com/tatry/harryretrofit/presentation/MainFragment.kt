@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import coil.load
+import com.tatry.harryretrofit.R
 import com.tatry.harryretrofit.databinding.FragmentMainBinding
 import kotlinx.coroutines.launch
 
@@ -39,8 +42,8 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewLifecycleOwner.lifecycleScope.launch{
-            viewModel.character.collect{
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.character.collect {
                 binding.tvName.text = it.name
                 binding.tvHouse.text = it.hogwartsHouse
                 binding.imageCharacter.load(it.imageUrl)
@@ -48,8 +51,8 @@ class MainFragment : Fragment() {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.state.collect{
-                when(it) {
+            viewModel.state.collect {
+                when (it) {
                     ProgressState.Loading -> binding.progressBar.isVisible = true
                     ProgressState.Success -> binding.progressBar.isVisible = false
                 }
@@ -57,7 +60,13 @@ class MainFragment : Fragment() {
         }
 
         binding.btnRandom.setOnClickListener {
-            viewModel.randomCharacter()
+//            viewModel.randomCharacter()
+            // для вызова фрагмента из фрагмента - родитель: активити
+            parentFragmentManager.commit {
+                replace<DbFragment>(R.id.fragment_container)
+                addToBackStack(DbFragment::class.java.simpleName)
+            }
+//            parentFragmentManager.popBackStack()
         }
 
     }
