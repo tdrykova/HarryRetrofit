@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.tatry.harryretrofit.data.local.database.AppDatabase
 import com.tatry.harryretrofit.data.local.migration.MIGRATION_1_2
+import com.tatry.harryretrofit.data.local.migration.MIGRATION_2_3
 
 class App : Application() {
 
@@ -20,7 +21,7 @@ class App : Application() {
             AppDatabase::class.java,
             "db"
         )
-            .addMigrations(MIGRATION_1_2)
+            .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
             .build()
 
         INSTANCE = this

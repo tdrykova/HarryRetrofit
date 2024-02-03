@@ -12,16 +12,11 @@ data class CharacterDbModel (
     val id: Int,
     @ColumnInfo(name = "name")
     val name: String,
-    @ColumnInfo(name = "birthday")
-    val birthday: String? = null // опциональное поле
-
-//    @ColumnInfo(name="hogwarts_house")
-//    val hogwartsHouse: String,
-//    @ColumnInfo(name="image_url")
-//    val imageUrl: String
+    @ColumnInfo(name="hogwarts_house")
+    val hogwartsHouse: String,
+    @ColumnInfo(name="image_url")
+    val imageUrl: String
 
 //    @Embedded(prefix = "wand_")
 //    val wand: WandDbModel?
-
-
 )

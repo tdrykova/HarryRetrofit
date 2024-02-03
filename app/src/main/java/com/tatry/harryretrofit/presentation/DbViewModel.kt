@@ -49,7 +49,9 @@ class DbViewModel
         size++
         val newCharacterDb = CharacterDbModel(
             id = size,
-            name = "Potter $size"
+            name = "Potter $size",
+            hogwartsHouse = "House",
+            imageUrl = "http://img.png"
         )
 
         viewModelScope.launch {
@@ -75,7 +77,7 @@ class DbViewModel
         viewModelScope.launch {
 //            _characters.value.lastOrNull()?.let {
             characters.value.lastOrNull()?.let {
-                val newCharacter = CharacterDbModel(it.id, "Severus")
+//                val newCharacter = CharacterDbModel(it.id, "Severus")
 //                characterDao.updateCharacter(newCharacter)
                 characterDao.updateCharacter(it.copy(name = "Severus"))
             }
