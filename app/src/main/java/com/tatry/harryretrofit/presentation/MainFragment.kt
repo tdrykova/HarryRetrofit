@@ -44,9 +44,12 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.character.collect {
-                binding.tvName.text = it.name
-                binding.tvHouse.text = it.hogwartsHouse
-                binding.imageCharacter.load(it.imageUrl)
+                with(binding) {
+                    tvName.text = it.name
+                    tvHouse.text = it.hogwartsHouse
+                    imageCharacter.load(it.imageUrl)
+                }
+
             }
         }
 
@@ -69,7 +72,8 @@ class MainFragment : Fragment() {
 //            parentFragmentManager.popBackStack()
         }
 
-        binding.tvFromActivity.text = arguments?.getString(KEY_FOR_STRING)
+//        binding.tvFromActivity.text = arguments?.getString(KEY_FOR_STRING)
+        binding.tvFromActivity.text = arguments?.getParcelable(KEY_FOR_STRING)
 
     }
 
@@ -79,11 +83,12 @@ class MainFragment : Fragment() {
     }
     companion object {
         private const val KEY_FOR_STRING = "data activity"
-        fun newInstance(str: String): Fragment {
+        fun newInstance(obj: DataForTransfer): Fragment {
 //            args.putString(KEY_FOR_STRING, VALUE_FROM_ACTIVITY)
             return MainFragment().apply {
                 arguments = Bundle().apply {
-                    putString(KEY_FOR_STRING, str)
+//                    putString(KEY_FOR_STRING, str)
+                    putParcelable(KEY_FOR_STRING, obj)
                 }
             }
 //            fragment.arguments = args
