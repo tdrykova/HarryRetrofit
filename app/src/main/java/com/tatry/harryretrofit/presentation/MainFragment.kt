@@ -69,14 +69,26 @@ class MainFragment : Fragment() {
 //            parentFragmentManager.popBackStack()
         }
 
+        binding.tvFromActivity.text = arguments?.getString(KEY_FOR_STRING)
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
     companion object {
-        fun newInstance() = MainFragment()
+        private const val KEY_FOR_STRING = "data activity"
+        fun newInstance(str: String): Fragment {
+//            args.putString(KEY_FOR_STRING, VALUE_FROM_ACTIVITY)
+            return MainFragment().apply {
+                arguments = Bundle().apply {
+                    putString(KEY_FOR_STRING, str)
+                }
+            }
+//            fragment.arguments = args
+        }
+
     }
+
 }
