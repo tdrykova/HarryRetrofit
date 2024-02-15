@@ -22,9 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         // с библиотекой
         supportFragmentManager.commit {
-//            val fragment = MainFragment()
-            val obj = DataForTransfer("str", 20)
-            val fragment = MainFragment.newInstance(obj)
+            val fragment = MainFragment.newInstance("text")
             replace(R.id.fragment_container, fragment)
             addToBackStack(MainFragment::class.java.simpleName)
         }

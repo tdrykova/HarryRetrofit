@@ -17,7 +17,6 @@ class App : Application() {
         // в файловой системе бд - нужно создавать миграции при изменениях бд
         db = Room.databaseBuilder(
             this,
-//            applicationContext,
             AppDatabase::class.java,
             "db"
         )

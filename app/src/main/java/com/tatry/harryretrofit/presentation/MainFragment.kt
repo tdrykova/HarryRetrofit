@@ -10,6 +10,8 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+
+import androidx.navigation.fragment.findNavController
 import coil.load
 import com.tatry.harryretrofit.R
 import com.tatry.harryretrofit.databinding.FragmentMainBinding
@@ -28,7 +30,9 @@ class MainFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+//        val navHostFragment = supportFragmentManager.findFragmentById(
+//            R.id.dashboardNavHostFragment
+//        ) as NavHostFragment
 
     }
 
@@ -71,10 +75,12 @@ class MainFragment : Fragment() {
             }
 //            parentFragmentManager.popBackStack()
         }
+        binding.tvFromActivity.text = arguments?.getString(KEY_FOR_STRING)
 
-//        binding.tvFromActivity.text = arguments?.getString(KEY_FOR_STRING)
-        binding.tvFromActivity.text = arguments?.getParcelable(KEY_FOR_STRING)
+        binding.tvHouse.setOnClickListener {
 
+            findNavController().navigate(R.id.action_MainFragment_to_DbFragment)
+        }
     }
 
     override fun onDestroyView() {
@@ -83,15 +89,12 @@ class MainFragment : Fragment() {
     }
     companion object {
         private const val KEY_FOR_STRING = "data activity"
-        fun newInstance(obj: DataForTransfer): Fragment {
-//            args.putString(KEY_FOR_STRING, VALUE_FROM_ACTIVITY)
+        fun newInstance(str: String): Fragment {
             return MainFragment().apply {
                 arguments = Bundle().apply {
-//                    putString(KEY_FOR_STRING, str)
-                    putParcelable(KEY_FOR_STRING, obj)
+                    putString(KEY_FOR_STRING, str)
                 }
             }
-//            fragment.arguments = args
         }
 
     }

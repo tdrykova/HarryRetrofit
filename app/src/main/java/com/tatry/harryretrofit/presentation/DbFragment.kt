@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.tatry.harryretrofit.R
 import com.tatry.harryretrofit.databinding.FragmentDbBinding
 import kotlinx.coroutines.launch
@@ -38,7 +39,7 @@ class DbFragment : Fragment() {
         viewModel.initDao(activity?.application)
 
         binding.btnAdd.setOnClickListener { viewModel.onBtnAdd() }
-        binding.btnUpdate.setOnClickListener { viewModel.onBtnUpdate() }
+        binding.btnUpdate.setOnClickListener {findNavController().navigate(R.id.action_DbFragment_to_MainFragment)}//{ viewModel.onBtnUpdate() }
         binding.btnDelete.setOnClickListener { viewModel.onBtnDelete() }
 
         // подписываемся на поток (собираем приходящие данные)
