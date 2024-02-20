@@ -75,28 +75,19 @@ class MainFragment : Fragment() {
             }
 //            parentFragmentManager.popBackStack()
         }
-        binding.tvFromActivity.text = arguments?.getString(KEY_FOR_STRING)
 
         binding.tvHouse.setOnClickListener {
-
-//            findNavController().navigate(R.id.action_MainFragment_to_DbFragment)
+            findNavController().navigate(
+                MainFragmentDirections.actionMainFragmentToDbFragment(
+                    strHello = "hello"
+                )
+            )
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-    companion object {
-        private const val KEY_FOR_STRING = "data activity"
-        fun newInstance(str: String): Fragment {
-            return MainFragment().apply {
-                arguments = Bundle().apply {
-                    putString(KEY_FOR_STRING, str)
-                }
-            }
-        }
-
     }
 
 }

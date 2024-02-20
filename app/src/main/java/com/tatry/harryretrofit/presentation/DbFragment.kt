@@ -1,23 +1,18 @@
 package com.tatry.harryretrofit.presentation
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import com.tatry.harryretrofit.R
+import androidx.navigation.fragment.navArgs
 import com.tatry.harryretrofit.databinding.FragmentDbBinding
 import kotlinx.coroutines.launch
 
 class DbFragment : Fragment() {
-
-//    private val viewModel: DbViewModel by viewModels{
-//        DbViewModelFactory()
-//    }
+    private val args by navArgs<DbFragmentArgs>()
 
     private val viewModel: DbViewModel by viewModels()
 
@@ -42,13 +37,14 @@ class DbFragment : Fragment() {
         binding.btnUpdate.setOnClickListener { viewModel.onBtnUpdate() }
         binding.btnDelete.setOnClickListener { viewModel.onBtnDelete() }
 
+        binding.textView.text = args.strHello
         // подписываемся на поток (собираем приходящие данные)
-        lifecycleScope.launch {
-//            viewModel.allCharacters.collect{
-            viewModel.characters.collect{
-                binding.textView.text = it.joinToString(separator = "\r\n")
-            }
-        }
+//        lifecycleScope.launch {
+////            viewModel.allCharacters.collect{
+//            viewModel.characters.collect{
+//                binding.textView.text = it.joinToString(separator = "\r\n")
+//            }
+//        }
 
 
 

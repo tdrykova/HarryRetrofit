@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.tatry.harryretrofit.R
 import com.tatry.harryretrofit.databinding.ActivityMainBinding
 
@@ -14,18 +16,10 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // без библиотеки для фрагментов
-//        supportFragmentManager.beginTransaction().replace(
-//            R.id.fragment_container,
-//            MainFragment()
-//        ).commit()
-
-        // с библиотекой
-        supportFragmentManager.commit {
-            val fragment = MainFragment.newInstance("text")
-            replace(R.id.fragment_container, fragment)
-            addToBackStack(MainFragment::class.java.simpleName)
-        }
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.fragment_container) as NavHostFragment
+        val navController = navHostFragment.navController
+        setupActionBarWithNavController(navController)
     }
 
 
