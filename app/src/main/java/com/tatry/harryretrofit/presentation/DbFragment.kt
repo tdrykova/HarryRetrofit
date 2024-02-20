@@ -39,7 +39,7 @@ class DbFragment : Fragment() {
         viewModel.initDao(activity?.application)
 
         binding.btnAdd.setOnClickListener { viewModel.onBtnAdd() }
-        binding.btnUpdate.setOnClickListener {findNavController().navigate(R.id.action_DbFragment_to_MainFragment)}//{ viewModel.onBtnUpdate() }
+        binding.btnUpdate.setOnClickListener { viewModel.onBtnUpdate() }
         binding.btnDelete.setOnClickListener { viewModel.onBtnDelete() }
 
         // подписываемся на поток (собираем приходящие данные)

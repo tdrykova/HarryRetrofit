@@ -79,7 +79,7 @@ class MainFragment : Fragment() {
 
         binding.tvHouse.setOnClickListener {
 
-            findNavController().navigate(R.id.action_MainFragment_to_DbFragment)
+//            findNavController().navigate(R.id.action_MainFragment_to_DbFragment)
         }
     }
 

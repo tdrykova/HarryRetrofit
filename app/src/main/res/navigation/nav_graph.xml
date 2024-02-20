@@ -3,26 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/MainFragment">
-
+    app:startDestination="@id/receptionFragment">
     <fragment
-        android:id="@+id/MainFragment"
-        android:name="com.tatry.harryretrofit.presentation.MainFragment"
-        android:label="First Fragment"
-        tools:layout="@layout/fragment_main">
+        android:id="@+id/receptionFragment"
+        android:name="com.tatry.harryretrofit.presentation.ReceptionFragment"
+        android:label="fragment_reception"
+        tools:layout="@layout/fragment_reception" >
         <action
-            android:id="@+id/action_MainFragment_to_DbFragment"
-            app:destination="@+id/DbFragment"
-            />
-
+            android:id="@+id/action_receptionFragment_to_restRoomFragment"
+            app:destination="@id/restRoomFragment" />
     </fragment>
-
     <fragment
-        android:id="@+id/DbFragment"
-        android:name="com.tatry.harryretrofit.presentation.DbFragment"
-        android:label="Second Fragment"
-        tools:layout="@layout/fragment_db">
-        <action android:id="@+id/action_DbFragment_to_MainFragment"
-            app:destination="@+id/MainFragment"/>
+        android:id="@+id/restRoomFragment"
+        android:name="com.tatry.harryretrofit.presentation.RestRoomFragment"
+        android:label="fragment_rest_room"
+        tools:layout="@layout/fragment_rest_room" >
+        <action
+            android:id="@+id/action_restRoomFragment_to_cageFragment"
+            app:destination="@id/cageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cageFragment"
+        android:name="com.tatry.harryretrofit.presentation.CageFragment"
+        android:label="fragment_cage"
+        tools:layout="@layout/fragment_cage" >
+        <action
+            android:id="@+id/action_cageFragment_to_receptionFragment"
+            app:destination="@id/receptionFragment" />
     </fragment>
 </navigation>
