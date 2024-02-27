@@ -9,7 +9,7 @@ import com.tatry.harryretrofit.domain.usecase.GetCharacterUseCase
 class MainViewModelFactory: ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
-            val repo = CharacterRepositoryImpl()
+            val repo = CharacterRepositoryImpl
             val useCase1 = GetCharacterUseCase(repo)
             val useCase2 = GetCharacterListUseCase(repo)
             return MainViewModel(repo, useCase1, useCase2) as T

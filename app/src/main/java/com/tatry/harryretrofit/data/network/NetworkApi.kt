@@ -12,7 +12,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Path
 import java.util.concurrent.TimeUnit
 
-const val BASE_URL = "https://harry-potter-api-en.onrender.com"
+const val BASE_URL = "1.5.6 Архитектура Single Activity "
 
 // funs from CharacterRepository
 interface SearchCharactersApi{

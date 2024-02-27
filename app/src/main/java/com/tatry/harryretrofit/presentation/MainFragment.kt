@@ -67,22 +67,9 @@ class MainFragment : Fragment() {
         }
 
         binding.btnRandom.setOnClickListener {
-//            viewModel.randomCharacter()
-            // для вызова фрагмента из фрагмента - родитель: активити
-            parentFragmentManager.commit {
-                replace<DbFragment>(R.id.fragment_container)
-                addToBackStack(DbFragment::class.java.simpleName)
-            }
-//            parentFragmentManager.popBackStack()
+            viewModel.randomCharacter()
         }
 
-        binding.tvHouse.setOnClickListener {
-            findNavController().navigate(
-                MainFragmentDirections.actionMainFragmentToDbFragment(
-                    strHello = "hello"
-                )
-            )
-        }
     }
 
     override fun onDestroyView() {

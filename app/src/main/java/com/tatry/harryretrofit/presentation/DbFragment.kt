@@ -12,7 +12,6 @@ import com.tatry.harryretrofit.databinding.FragmentDbBinding
 import kotlinx.coroutines.launch
 
 class DbFragment : Fragment() {
-    private val args by navArgs<DbFragmentArgs>()
 
     private val viewModel: DbViewModel by viewModels()
 
@@ -37,7 +36,7 @@ class DbFragment : Fragment() {
         binding.btnUpdate.setOnClickListener { viewModel.onBtnUpdate() }
         binding.btnDelete.setOnClickListener { viewModel.onBtnDelete() }
 
-        binding.textView.text = args.strHello
+
         // подписываемся на поток (собираем приходящие данные)
 //        lifecycleScope.launch {
 ////            viewModel.allCharacters.collect{

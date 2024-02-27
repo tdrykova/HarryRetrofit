@@ -4,9 +4,9 @@ buildscript {
         agp_version = '7.4.1'
     }
 
-    // Navigation start
-    // 1 вариант
-    // plugins { id 'androidx.navigation.safeargs' version '2.7.6' apply false }
+  //   Navigation start
+//     1 вариант
+//     plugins { id 'androidx.navigation.safeargs' version '2.7.6' apply false }
 //    repositories {
 //        google()
 //    }
@@ -14,8 +14,9 @@ buildscript {
 //        def nav_version = "2.7.6"
 //        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
 //    }
-    // Navigation finish
-    // 2-ой вариант: plugins { id 'androidx.navigation.safeargs' version '2.7.6' apply false }
+ //    Navigation finish
+//     2-ой вариант:
+//             plugins { id 'androidx.navigation.safeargs' version '2.7.6' apply false }
 }
 
 plugins {
