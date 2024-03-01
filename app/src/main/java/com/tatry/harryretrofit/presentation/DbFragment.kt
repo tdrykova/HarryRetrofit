@@ -6,10 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.navArgs
 import com.tatry.harryretrofit.databinding.FragmentDbBinding
-import kotlinx.coroutines.launch
 
 class DbFragment : Fragment() {
 

@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.tatry.harryretrofit.databinding.FragmentCharacterListBinding
+import kotlinx.coroutines.launch
 
 class CharacterListFragment : Fragment() {
 
@@ -16,7 +18,9 @@ class CharacterListFragment : Fragment() {
     private val binding get() = _binding!!
 
     // from fragment lib
-    private val viewModel: CharacterListViewModel by viewModels()
+    private val viewModel: CharacterListViewModel by viewModels{
+        CharacterListViewModelFactory()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +32,10 @@ class CharacterListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+
         val rvAdapter = CharacterListAdapter()
         binding.rvCharacterList.adapter = rvAdapter
 
@@ -43,12 +51,19 @@ class CharacterListFragment : Fragment() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val item = rvAdapter.characterList[viewHolder.adapterPosition]
-                CharacterListAdapter().characterList.remove(item)
+                val item = rvAdapter.currentList[viewHolder.adapterPosition]
+                viewModel.deleteCharacterAfterSwipe(item)
             }
         }
 
         ItemTouchHelper(callback).attachToRecyclerView(binding.rvCharacterList)
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.characterList.collect{
+                rvAdapter.submitList(it)
+            }
+        }
+
     }
 
     override fun onDestroyView() {
