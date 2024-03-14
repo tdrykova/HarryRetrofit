@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="viewModel"
             type="com.tatry.harryretrofit.presentation.CharacterListViewModel" />
-    <import type="android.view.View"/>
+
+        <import type="android.view.View" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.CharacterListFragment">
@@ -33,15 +34,23 @@
                 android:layout_gravity="center" />
         </FrameLayout>
 
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_character_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/checkbox_only_slytherin"
+            app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/character_item" />
 
-
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/checkbox_only_slytherin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Only Slytherin"
+            android:checked="@={viewModel.onlySlytherin}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="+id/rv_character_list" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

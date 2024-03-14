@@ -57,6 +57,7 @@ class MainFragment : Fragment() {
                 when (it) {
                     ProgressState.Loading -> binding.progressBar.isVisible = true
                     ProgressState.Success -> binding.progressBar.isVisible = false
+                    else -> {}
                 }
             }
         }

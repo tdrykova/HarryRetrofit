@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "HarryRetrofit"
 include(":app")
- 
+include(":yandex_smart")
